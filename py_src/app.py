@@ -414,57 +414,5 @@ def add_adres() :
     return render_template('/CustomerSignIn/add_adres.html')
 
 
-
-#########   DELIVERY EXECUTIVE RELATED FUNCTIONS ########
-"""
-@app.route('/DeliveryExecutiveSignIn', methods = ['GET', 'POST'])
-def deliveryexecutive_signin_page() :
-    pysql.init()
-    global all_ids
-    if request.method == 'POST' :
-        if 'deliveryexecutive_login' in request.form:
-            email = request.form['deliveryexecutive_email']
-            password = request.form['deliveryexecutive_password']
-
-            # Check here the email-id and password entered with the sql database
-            ans = DeliveryExecutive.check_deliveryexecutive_signin(pysql, email, password)
-            all_ids['deliveryexecutive_id'] = ans
-            if ans :
-                print("Logged In")
-                return redirect('/DeliveryDetails')
-            else :
-                print("Invalid Email or Password")
-
-    return render_template('/DeliveryExecutiveSignIn/deliveryexecutive_signin.html')
-
-
-@app.route('/DeliveryDetails', methods = ['GET', 'POST'])
-def delivery_details_page() :
-    pysql.init()
-
-    # find all undelivered and delivered orders
-    undelivered_details = DeliveryExecutive.get_orders_details(pysql, all_ids['deliveryexecutive_id'], 0)
-    delivered_details = DeliveryExecutive.get_orders_details(pysql, all_ids['deliveryexecutive_id'], 1)
-
-    if request.method == 'POST' :
-
-        # Get the ids of orders that are undelivered
-        order_ids = []
-        for i in undelivered_details:
-            order_ids.append(i[0])
-
-        # Get the order id that is selected and compare it with all the
-        # undelivered order ids. Change the status of the selected order id.
-        # Again find all the undelivered and delivered orders and display them
-        selected_order_id = request.form["delivered"]
-        for i in order_ids:
-            if selected_order_id == i:
-                DeliveryExecutive.change_delivery_status(pysql, selected_order_id)
-                undelivered_details = DeliveryExecutive.get_orders_details(pysql, all_ids['deliveryexecutive_id'], 0)
-                delivered_details = DeliveryExecutive.get_orders_details(pysql, all_ids['deliveryexecutive_id'], 1)
-                break
-
-    return render_template('/DeliveryExecutiveSignIn/delivery_details.html', delivery_id = all_ids['deliveryexecutive_id'], undelivered_details = undelivered_details, delivered_details = delivered_details)
-"""
 if __name__ == "__main__" :
     app.run(debug = True)
