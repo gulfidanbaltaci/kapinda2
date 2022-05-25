@@ -36,7 +36,7 @@ class Customer :
     # @retval boolean returns the customer_id allocated for that entry if the 
     #         entry is successfully inserted in the database, else 0
     @staticmethod
-    def customer_signup(pysql, firstname, lastname, email, Sifre, Telefon_no) :
+    def customer_signup(pysql, Ad, Soyad, email, Sifre, Telefon_no) :
         # Fetch the global variables
         global next_customer_id
         global next_customer_id_read
@@ -59,7 +59,7 @@ class Customer :
                     'VALUES (%s, %s, %s, %s, %s, %s)' 
 
         try : 
-            pysql.run(sql_stmt, (customer_id, firstname, lastname, email, Sifre, Telefon_no))
+            pysql.run(sql_stmt, (customer_id, Ad, Soyad, email, Sifre, Telefon_no))
 
             # Commit the changes to the remote database
             pysql.commit()
@@ -83,7 +83,7 @@ class Customer :
     # @retval boolean returns the profile is updated sucessfully, else 0
     @staticmethod
     def get_customer_profile(pysql, customer_id) :
-        sql_stmt =  'SELECT Ad, Last_name, Email, Telefon_no ' \
+        sql_stmt =  'SELECT Ad, Soyad, Email, Telefon_no ' \
                     'FROM Customer ' \
                     'WHERE Customer_ID = %s'
         try :
