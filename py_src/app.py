@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect
 import sys, os
-#sys.path += ['../']
-file_dir = os.path.dirname('C:\\Users\\balta\\Desktop\\kapindaFinal\\OdsLib')
+sys.path += ['../']
+file_dir = os.path.dirname('C:\\Users\\GulfidanBaltaciNephO\\Desktop\\Kapinda-2\\kapinda2\\OdsLib')
 sys.path.append(file_dir)
 from OdsLib import *
 
@@ -66,11 +66,12 @@ def customer_signup_page() :
             Sifre = userDetails['customer_Sifre']
             Kontrol_Sifre = userDetails['customer_Kontrol_Sifre']
             Telefon_no = userDetails['customer_Telefon_no']
+            Telefon_no2 = userDetails['customer_Telefon_no2']
 
             if Sifre == Kontrol_Sifre :
 
                 # Add the details to the sql database
-                customer_id = Customer.customer_signup(pysql, Ad, Soyad, email, Sifre, Telefon_no)
+                customer_id = Customer.customer_signup(pysql, Ad, Soyad, email, Sifre, Telefon_no, Telefon_no2)
                 if customer_id != 0 :
                     return render_template('/CustomerSignIn/customer_signup_success.html', customer_id = customer_id)
 
@@ -351,6 +352,7 @@ def profile_view_and_updation() :
     Soyad = profile[0][1]
     email = profile[0][2]
     Telefon_no = profile[0][3]
+    Telefon_no2 = profile[0][4]
 
     # get all the adres that are linked with customer account
     adres_details = Adres.view_all_adres_of_customer(pysql, all_ids['customer_id'])
@@ -362,16 +364,17 @@ def profile_view_and_updation() :
             Soyad = profile_details['Soyad']
             email = profile_details['email']
             Telefon_no = profile_details['Telefon_no']
+            Telefon_no2 = profile_details['Telefon_no2']
 
 
         # Update the profile 
-        ans = Customer.update_customer_profile(pysql, all_ids['customer_id'], Ad, Soyad, email, Telefon_no)
+        ans = Customer.update_customer_profile(pysql, all_ids['customer_id'], Ad, Soyad, email, Telefon_no, Telefon_no2)
         if ans :
             print("Profile Updated Successfully!")
         else :
             print("Profile Updation Failed")
 
-    return render_template('/CustomerSignIn/your_account.html', customer_id = all_ids['customer_id'], Ad = Ad, Soyad = Soyad, email = email, Telefon_no = Telefon_no,  adres_details = adres_details)
+    return render_template('/CustomerSignIn/your_account.html', customer_id = all_ids['customer_id'], Ad = Ad, Soyad = Soyad, email = email, Telefon_no = Telefon_no, Telefon_no2 = Telefon_no2, adres_details = adres_details)
 
 
 @app.route('/YourOrders', methods = ['GET', 'POST'])

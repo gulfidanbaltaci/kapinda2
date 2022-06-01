@@ -123,7 +123,7 @@
             </div>
             <div class="row text-center">
                 <br>
-                <h4 style="font-size:20px;color:#5C5C5C;">Choose an Address:</h4>
+                <h4 style="font-size:20px;color:#5C5C5C;">Choose an Adres:</h4>
             </div>
             <div class="table-wrapper">
                 <table class="table table-striped">
@@ -137,11 +137,11 @@
                         <th>Type</th>
                     </thead>
                     <tbody>
-                        {% for row in address_details %}
+                        {% for row in adres_details %}
                         <tr>
                             <td>
                                 <div class="radio">
-                                    <label><input type="radio" name="address_radio" value = "{{ row[0] }}" required>{{ row[0] }}</label>
+                                    <label><input type="radio" name="adres_radio" value = "{{ row[0] }}" required>{{ row[0] }}</label>
                                 </div>
                             </td>
                             {% for detail in row[1:] %}

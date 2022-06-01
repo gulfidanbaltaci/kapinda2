@@ -74,10 +74,10 @@ class Orders :
                     pysql.commit()
 
             # If the quantity of the product becomes zero (out of stock), remove it
-            ''' sql_stmt =  'DELETE FROM Product ' \
+            sql_stmt =  'DELETE FROM Product ' \
                         'WHERE Quantity = 0'
             pysql.run(sql_stmt)
-            pysql.commit()'''
+            pysql.commit()
 
 
             # Empty the Cart

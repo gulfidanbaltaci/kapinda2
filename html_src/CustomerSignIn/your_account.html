@@ -12,7 +12,7 @@
     <div class="well">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
-            <li><a href="#youraddresses" data-toggle="tab">Your Addresses</a></li>
+            <li><a href="#youradreses" data-toggle="tab">Your Adreses</a></li>
         </ul>
         <div id="myTabContent" class="tab-content">
             <div class="tab-pane active in" id="profile">
@@ -27,6 +27,8 @@
                     <input name="email" type="text" value="{{ email }}" class="input-xlarge" required="required">
                     <label>Phone Number</label>
                     <input name="Telefon_no" type="text" value="{{ Telefon_no }}" class="input-xlarge" required="required">
+                    <label>Phone Number2</label>
+                    <input name="Telefon_no2" type="text" value="{{ Telefon_no2 }}" class="input-xlarge" required="required">
                     <br>
                     <div style="display: inline" >
                         <button type="submit" name="update" class="btn btn-primary">Update</button>
@@ -34,7 +36,7 @@
                         <p style="display: inline" class="text"><a href="ProductCategory">Back</a></p>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="youraddresses">
+                <div class="tab-pane fade" id="youradreses">
                     <div class="table-wrapper">
                         <table class="table table-striped">
                             <thead>
@@ -47,7 +49,7 @@
                                 <th>Type</th>
                             </thead>
                             <tbody>
-                                {% for row in address_details %}
+                                {% for row in adres_details %}
                                 <tr>
                                     {% for detail in row %}
                                     <td>

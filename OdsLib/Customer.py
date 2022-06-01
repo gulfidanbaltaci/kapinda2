@@ -36,7 +36,7 @@ class Customer :
     # @retval boolean returns the customer_id allocated for that entry if the 
     #         entry is successfully inserted in the database, else 0
     @staticmethod
-    def customer_signup(pysql, Ad, Soyad, email, Sifre, Telefon_no) :
+    def customer_signup(pysql, Ad, Soyad, email, Sifre, Telefon_no, Telefon_no2 ) :
         # Fetch the global variables
         global next_customer_id
         global next_customer_id_read
@@ -56,10 +56,10 @@ class Customer :
 
         # Make an entry in the database
         sql_stmt =  'INSERT INTO Customer ' \
-                    'VALUES (%s, %s, %s, %s, %s, %s)' 
+                    'VALUES (%s, %s, %s, %s, %s, %s, %s)' 
 
         try : 
-            pysql.run(sql_stmt, (customer_id, Ad, Soyad, email, Sifre, Telefon_no))
+            pysql.run(sql_stmt, (customer_id, Ad, Soyad, email, Sifre, Telefon_no, Telefon_no2))
 
             # Commit the changes to the remote database
             pysql.commit()
@@ -83,7 +83,7 @@ class Customer :
     # @retval boolean returns the profile is updated sucessfully, else 0
     @staticmethod
     def get_customer_profile(pysql, customer_id) :
-        sql_stmt =  'SELECT Ad, Soyad, Email, Telefon_no ' \
+        sql_stmt =  'SELECT Ad, Soyad, Email, Telefon_no, Telefon_no2 ' \
                     'FROM Customer ' \
                     'WHERE Customer_ID = %s'
         try :
@@ -100,12 +100,12 @@ class Customer :
     # @param Name of the parameter are self-explanatory (string)
     # @retval boolean returns the if the profile is updated sucessfully, else 0
     @staticmethod
-    def update_customer_profile(pysql, customer_id, Ad, Soyad, email, Telefon_no) :
+    def update_customer_profile(pysql, customer_id, Ad, Soyad, email, Telefon_no, Telefon_no2) :
         sql_stmt =  'UPDATE Customer ' \
-                    'SET Ad = %s, Soyad = %s, Email = %s, Telefon_no = %s' \
+                    'SET Ad = %s, Soyad = %s, Email = %s, Telefon_no = %s, Telefon_no2 = %s',  \
                     'WHERE Customer_ID = %s'
         try :
-            pysql.run(sql_stmt, (Ad, Soyad, email, Telefon_no,  customer_id))
+            pysql.run(sql_stmt, (Ad, Soyad, email, Telefon_no, Telefon_no2, customer_id))
             pysql.commit()
             return 1
 
