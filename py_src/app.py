@@ -5,6 +5,7 @@ file_dir = os.path.dirname('C:\\Users\\GulfidanBaltaciNephO\\Desktop\\Kapinda-2\
 sys.path.append(file_dir)
 from OdsLib import *
 
+
 app = Flask(__name__ , template_folder = '../html_src/', static_folder = '../html_src/')
 pysql = PySql(app, 'db.yaml')
 
