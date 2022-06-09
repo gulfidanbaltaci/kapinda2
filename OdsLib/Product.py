@@ -3,11 +3,11 @@ import random
 next_product_id = None
 # This variable indicates whether the next_product_id has been initialized
 next_product_id_read = 0
-product_shortforms = {'Mobile'  : 'MOB', 
-                      'Laptop'  : 'LAP', 
-                      'Books'   : 'BOK',
-                      'Sport'  : 'SPT',
-                      'Clothing': 'CLT'}
+product_shortforms = {'Hamburger'  : 'HAM', 
+                      'Pizza'  : 'PIZ', 
+                      'Pide'   : 'PDE',
+                      'Kebap'  : 'KBP',
+                      'Doner': 'DNR'}
 
 # @brief This class is used to handle the product details and updation
 # @note  There is not need to create an object of this class as all

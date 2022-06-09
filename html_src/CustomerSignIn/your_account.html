@@ -11,29 +11,29 @@
 <body>
     <div class="well">
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
-            <li><a href="#youradreses" data-toggle="tab">Your Adreses</a></li>
+            <li class="active"><a href="#profile" data-toggle="tab">Profil</a></li>
+            <li><a href="#youradreses" data-toggle="tab">Kayıtlı Adresler</a></li>
         </ul>
         <div id="myTabContent" class="tab-content">
             <div class="tab-pane active in" id="profile">
                 <form action="" method="POST">
-                    <label>Customer ID</label>
+                    <label>Musteri ID</label>
                     <input name="customer_id" type="text" value="{{ customer_id }}" class="input-xlarge" required="required" disabled>
                     <label>Ad</label>
                     <input name="Ad" type="text" value="{{ Ad }}" class="input-xlarge" required="required">
-                    <label>Last Name</label>
+                    <label>Soyad</label>
                     <input name="Soyad" type="text" value="{{ Soyad }}" class="input-xlarge" required="required">
                     <label>Email</label>
                     <input name="email" type="text" value="{{ email }}" class="input-xlarge" required="required">
-                    <label>Phone Number</label>
+                    <label>Telefon Numarası</label>
                     <input name="Telefon_no" type="text" value="{{ Telefon_no }}" class="input-xlarge" required="required">
-                    <label>Phone Number2</label>
+                    <label>Telefon Numarası</label>
                     <input name="Telefon_no2" type="text" value="{{ Telefon_no2 }}" class="input-xlarge" required="required">
                     <br>
                     <div style="display: inline" >
-                        <button type="submit" name="update" class="btn btn-primary">Update</button>
+                        <button type="submit" name="update" class="btn btn-primary">Güncelle</button>
                         &emsp;&emsp;
-                        <p style="display: inline" class="text"><a href="ProductCategory">Back</a></p>
+                        <p style="display: inline" class="text"><a href="ProductCategory">Geri</a></p>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="youradreses">
@@ -41,12 +41,12 @@
                         <table class="table table-striped">
                             <thead>
                                 <th>ID</th>
-                                <th>Pincode</th>
-                                <th>Street</th>
-                                <th>Landmark</th>
-                                <th>City</th>
-                                <th>State</th>
-                                <th>Type</th>
+                                <th>Posta kodu</th>
+                                <th>Cadde</th>
+                                <th>Mahalle</th>
+                                <th>Sehir</th>
+                                <th>İlçe</th>
+                                <th>Tip</th>
                             </thead>
                             <tbody>
                                 {% for row in adres_details %}
@@ -61,7 +61,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <p class="text"><a href="ProductCategory">Back</a></p>
+                    <p class="text"><a href="ProductCategory">Geri</a></p>
                 </div>
             </form>
         </div>
