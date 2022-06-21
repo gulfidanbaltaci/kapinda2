@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect
 import sys, os
+
 sys.path += ['../']
 file_dir = os.path.dirname('C:\\Users\\GulfidanBaltaciNephO\\Desktop\\Kapinda-2\\kapinda2\\OdsLib')
 sys.path.append(file_dir)

@@ -122,8 +122,10 @@ class Product :
 
     @staticmethod
     def get_product_by_category(pysql, category) :
-        sql_stmt =  'SELECT Product_ID, Name, Price, Rating, Seller ' \
+        sql_stmt =  'SELECT Product_ID, Name, Price, Rating, Seller_Name ' \
                     'FROM Product ' \
+                    'LEFT JOIN Seller ' \
+                    'ON Product.Seller = Seller.Seller_ID ' \
                     'WHERE Category = %s'
 
         pysql.run(sql_stmt, (category, ))
@@ -202,14 +204,16 @@ class Product :
         return products
 
     # Gives all products from database. Used by ADMIN
-    '''@staticmethod
+    @staticmethod
     def get_all_products(pysql) :
-        sql_stmt =  'SELECT Product_ID, Name, Category, Price, Rating, Seller, Quantity ' \
-                    'FROM Product'
+        sql_stmt =  'SELECT Product_ID, Name, Category, Price, Rating, Seller_Name, Quantity  \
+                    FROM Product \
+                    LEFT JOIN Seller \
+                    ON Product.Seller = Seller.Seller_ID '
 
         pysql.run(sql_stmt)
         products = pysql.result
 
         return products
 
-    '''
+    

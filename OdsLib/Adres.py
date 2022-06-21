@@ -29,14 +29,20 @@ class Adres :
         except :
             return 0
 
+
     @staticmethod
     def view_all_adres_of_customer(pysql, customer_id) :
             
-        sql_stmt =  'SELECT Adres_ID, Pincode, Street, Landmark, City, State, Type ' \
-                    'FROM Adres ' \
-                    'WHERE Customer_ID = %s' \
+        sql_stmt =  'SELECT Adres_ID, Pincode, Street, Landmark, City_Name, State, Type \
+                    FROM Adres \
+                    LEFT JOIN City \
+                    ON Adres.City = City.City_ID \
+                    WHERE Customer_ID = %s' 
 
         pysql.run(sql_stmt, (customer_id, ))
         adreses = pysql.result
 
         return adreses
+
+
+
